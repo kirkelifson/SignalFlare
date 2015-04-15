@@ -2,10 +2,10 @@ require 'open-uri'
 require 'cloudflare'
 
 class SignalFlare
-	def initialize(api_key, email)
-		@api_key = api_key
-		@email = email
-		@api =  CloudFlare::connection(api_key, email)
+  def initialize(api_key, email)
+    @api_key = api_key
+    @email = email
+    @api =  CloudFlare::connection(api_key, email)
     @ip = fetch_ip()
   end
 
@@ -13,9 +13,9 @@ class SignalFlare
     split = hostname.partition('.')
     @host, @domain = split[0], split[1]
 
-    begin    
+    begin
       record_id = nil
-      
+
       @api.rec_load_all(@domain)['response']['recs']['objs'].each do |record|
         if record['hostname'] == hostname
           record_id = record['rec_id']
