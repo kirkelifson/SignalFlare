@@ -11,7 +11,7 @@ class SignalFlare
 
   def update_ip(hostname)
     split = hostname.partition('.')
-    @host, @domain = split[0], split[1]
+    @host, @domain = split[0], split[2]
 
     begin
       record_id = nil
@@ -26,11 +26,9 @@ class SignalFlare
 
       throw 'Suitable record not found.' if record_id == nil
 
-      if @ip == dns_ip
-        throw 'IP has not changed.'
-      else
-        @api.rec_edit(@domain, 'A', record_id, hostname, external_ip, 1)
-      end
+      @api.rec_edit(@domain, 'A', record_id, hostname, external_ip, 1)
+
+      return 'IP has been updated to ' + external_ip + ' from ' + dns_ip
     rescue => e
       puts e.message
     end
