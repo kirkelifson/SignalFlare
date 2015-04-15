@@ -7,9 +7,9 @@ class SignalFlare
 		@email = email
 		@api =  CloudFlare::connection(api_key, email)
     @ip = fetch_ip()
-	end
+  end
 
-	def update_ip(hostname)
+  def update_ip(hostname)
     split = hostname.partition('.')
     @host, @domain = split[0], split[1]
 
@@ -34,7 +34,7 @@ class SignalFlare
     rescue => e
       puts e.message
     end
-	end
+  end
 
   def fetch_ip()
     open('http://api.ipify.org').read
