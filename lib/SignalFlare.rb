@@ -5,8 +5,7 @@ class SignalFlare
   def initialize(api_key, email)
     @api_key = api_key
     @email = email
-    @api =  CloudFlare::connection(api_key, email)
-    @ip = fetch_ip()
+    @api = CloudFlare::connection(api_key, email)
   end
 
   def update_ip(hostname)
@@ -15,16 +14,20 @@ class SignalFlare
 
     begin
       record_id = nil
+      dns_ip = nil
+      external_ip = fetch_ip()
 
       @api.rec_load_all(@domain)['response']['recs']['objs'].each do |record|
-        if record['hostname'] == hostname
+        if record['name'] == hostname
           record_id = record['rec_id']
           dns_ip = record['content']
           break
         end
       end
 
-      throw 'Suitable record not found.' if record_id == nil
+      return 'Suitable record not found.' if record_id == nil
+
+      return 'IP has not changed.' if dns_ip == external_ip
 
       @api.rec_edit(@domain, 'A', record_id, hostname, external_ip, 1)
 
@@ -34,7 +37,7 @@ class SignalFlare
     end
   end
 
-  def fetch_ip()
+  def fetch_ip
     open('http://api.ipify.org').read
   end
 end
