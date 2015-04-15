@@ -1,12 +1,5 @@
-#!/usr/bin/env ruby
-
 require 'open-uri'
 require 'cloudflare'
-
-# Script location: /etc/init.d/cloudflare-ip-update.rb
-# chmod +x /etc/init.d/cloudflare-ip-update.rb
-# update-rc.d cloudflare-ip-update.rb defaults
-# crontab -e ... (every 12 hours)
 
 class SignalFlare
 	def initialize(api_key, email)
@@ -31,7 +24,7 @@ class SignalFlare
         end
       end
 
-      return 'Suitable record not found.' if record_id == nil
+      throw 'Suitable record not found.' if record_id == nil
 
       if @ip == dns_ip
         throw 'IP has not changed.'
