@@ -25,13 +25,17 @@ class SignalFlare
         end
       end
 
-      return 'Suitable record for ' + hostname + ' not found.' if record_id == nil
+      if record_id == nil
+        puts 'Suitable record for ' + hostname + ' not found.'
+      end
 
-      return 'IP for ' + hostname + ' has not changed.' if dns_ip == external_ip
+      if dns_ip == external_ip
+        puts 'IP for ' + hostname + ' has not changed.'
+      end
 
       @api.rec_edit(@domain, 'A', record_id, hostname, external_ip, 1)
 
-      return 'IP for ' + hostname + ' has been updated from' + dns_ip + ' to ' + external_ip
+      puts 'IP for ' + hostname + ' has been updated from' + dns_ip + ' to ' + external_ip
     rescue => e
       puts e.message
     end
