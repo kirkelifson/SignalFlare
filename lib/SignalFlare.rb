@@ -31,7 +31,7 @@ class SignalFlare
 
       @api.rec_edit(@domain, 'A', record_id, hostname, external_ip, 1)
 
-      return 'IP for ' + hostname + ' has been updated from' + dns_ip + ' from ' + external_ip
+      return 'IP for ' + hostname + ' has been updated from' + dns_ip + ' to ' + external_ip
     rescue => e
       puts e.message
     end
