@@ -1,8 +1,9 @@
 # SignalFlare
 Keep CloudFlare DNS records updated on dynamic IPs
 
-Homepage [https://github.com/kirkelifson/SignalFlare](SignalFlare)
-Published on RubyGems at [https://rubygems.org/gems/SignalFlare](SignalFlare 1.0.0)
+Homepage [SignalFlare](https://github.com/kirkelifson/SignalFlare)
+
+Published on RubyGems at [SignalFlare 1.0.0](https://rubygems.org/gems/SignalFlare)
 
 # Usage
 
