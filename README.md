@@ -1,4 +1,4 @@
-# SignalFlare v1.0.2
+# SignalFlare v1.0.3
 Keep CloudFlare DNS records updated on dynamic IPs
 
 [SignalFlare homepage](https://github.com/kirkelifson/SignalFlare)
