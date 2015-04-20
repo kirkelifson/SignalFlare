@@ -3,9 +3,9 @@ require "cloudflare"
 
 class SignalFlare
   def initialize(api_key, email)
-    self.api_key = api_key
-    self.email = email
-    self.api = CloudFlare::connection(api_key, email)
+    @api_key = api_key
+    @email = email
+    @api = CloudFlare::connection(api_key, email)
   end
 
   def update_ip(hostname)
@@ -17,7 +17,7 @@ class SignalFlare
     dns_ip = nil
     external_ip = fetch_ip()
 
-    self.api.rec_load_all(domain)["response"]["recs"]["objs"].each do |record|
+    @api.rec_load_all(domain)["response"]["recs"]["objs"].each do |record|
       if record["name"] == hostname
         record_id = record["rec_id"]
         dns_ip = record["content"]
@@ -35,7 +35,7 @@ class SignalFlare
       return
     end
 
-    self.api.rec_edit(domain, "A", record_id, hostname, external_ip, 1)
+    @api.rec_edit(domain, "A", record_id, hostname, external_ip, 1)
 
     puts "IP for #{hostname} has been updated from #{dns_ip} to #{external_ip}"
   end
