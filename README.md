@@ -1,4 +1,4 @@
-# SignalFlare v1.0.5
+# SignalFlare v1.1.0
 
 ![Build Status](https://travis-ci.org/kirkelifson/SignalFlare.svg)
 
