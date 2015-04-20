@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'SignalFlare'
-  s.version     = '1.0.4'
+  s.version     = '1.0.5'
   s.date        = '2015-04-15'
   s.summary     = 'Signal Flare'
   s.description = 'Updates DNS records on CloudFlare for systems on dynamically allocated IP addresses'
