@@ -7,7 +7,7 @@
 
 #!/usr/bin/env ruby
 
-require "./lib/SignalFlare.rb"
+require "SignalFlare"
 
 hostname = "test.parodybit.net"
 api_key = "not_a_real_api_key"
