@@ -41,6 +41,6 @@ class SignalFlare
   end
 
   def fetch_ip
-    open("http://curlmyip.com").read.chop
+    %x(dig +short myip.opendns.com @resolver1.opendns.com).strip
   end
 end

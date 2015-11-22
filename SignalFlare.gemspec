@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'SignalFlare'
-  s.version     = '1.1.0'
-  s.date        = '2015-04-15'
+  s.version     = '1.2.0'
+  s.date        = '2015-11-22'
   s.summary     = 'Signal Flare'
   s.description = 'Updates DNS records on CloudFlare for systems on dynamically allocated IP addresses'
   s.authors     = ['Kirk Elifson']
@@ -11,5 +11,5 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   # Dependencies
-  s.add_dependency 'cloudflare', '~> 2.0'
+  s.add_dependency 'cloudflare', '2.0.3'
 end
